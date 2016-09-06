@@ -10,8 +10,8 @@ module.exports = {
     },
     watch: true,
     plugins: [
-      new webpack.optimize.DedupePlugin(),
-      new webpack.optimize.UglifyJsPlugin(),
+      // new webpack.optimize.DedupePlugin(),
+      // new webpack.optimize.UglifyJsPlugin(),
       new CompressionPlugin({
           asset: 'bradpitt.gz',
           algorithm: 'gzip',
