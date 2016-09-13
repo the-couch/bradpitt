@@ -53,7 +53,7 @@ const read = {
 
 const write = {
   format: 'umd',
-  exports: 'default',
+  // exports: 'default',
   moduleName: 'BradPitt',
   sourceMap: true
 }
