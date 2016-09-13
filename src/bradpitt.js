@@ -8,18 +8,10 @@
  */
 
 function lazy(el, className, timing) {
-
-  if (el.length) {
-    Array.from(el, (e) => {
-      setTimeout(() => {
-        e.classList.add(className)
-      }, timing)
-    })
-  } else {
-    setTimeout(() => {
-      el.classList.add(className)
-    }, timing)
+  let sT = (e) => {
+    setTimeout(() => { e.classList.add(className) }, timing)
   }
+  el.length ? Array.from(el, (e) => { sT(e) }) : sT(el)
   return this
 }
 
