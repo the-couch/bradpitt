@@ -13,11 +13,10 @@ $ npm i bradpitt --save
 ```
 
 
-## Initialize BradPitt
+## Initialize BradPitt Modules
 
 ```javascript
-import BradPitt from 'bradpitt'
-const bradpitt = new BradPitt()
+import {lazy} from 'bradpitt'
 ```
 
 ### Lazy Adding classes
@@ -29,9 +28,9 @@ let oscar = doucment.querySelector('.award')
 
 let oscars = doucment.querySelectorAll('.awards')
 
-bradpitt.lazy(oscar, 'won', 600)
+lazy(oscar, 'won', 600)
 
-bradpitt.lazy(oscars, 'nominated', 900)
+lazy(oscars, 'nominated', 900)
 ```
 
 * * *
