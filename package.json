@@ -1,21 +1,12 @@
 {
   "name": "bradpitt",
   "version": "0.1.0",
+  "version": "0.0.10",
   "description": "Set of javascript modules that do cool stuff",
-  "main": "dist/bradpitt.js",
+  "main": "dist/bradpitt.min.js",
+  "jsnext:main": "src/bradpitt.js",
   "scripts": {
-    "build": "gulp build"
-  },
-  "browserify": {
-    "debug": true,
-    "cache": {},
-    "packageCache": {},
-    "extension": [
-      "js"
-    ],
-    "transform": [
-      "babelify"
-    ]
+    "build": ""
   },
   "repository": {
     "type": "git",
@@ -33,22 +24,17 @@
   },
   "homepage": "https://github.com/the-couch/bradpitt#readme",
   "devDependencies": {
-    "babel-cli": "^6.14.0",
-    "compression-webpack-plugin": "^0.3.1",
-    "babel-core": "^6.0.20",
-    "gulp-sass": "^2.2.0",
-    "imports-loader": "^0.6.5",
-    "babel-loader": "^6.0.1",
-    "babel-preset-es2015": "^6.0.15",
-    "babel-register": "^6.9.0",
-    "babelify": "^7.3.0",
-    "bundle-size": "^0.7.0",
-    "eslint": "^1.10.1",
-    "eslint-config-eslint": "^1.0.1",
-    "gulp": "^3.9.0",
-    "gulp-livereload": "^3.8.1",
-    "gulp-util": "^3.0.7",
-    "node-libs-browser": "^0.5.3",
-    "webpack": "^1.12.9"
+    "babel-preset-es2015-rollup": "*",
+    "babel-plugin-transform-object-rest-spread": "*",
+    "browser-sync": "*",
+    "del": "*",
+    "gulp": "*",
+    "mkdirp": "*",
+    "node-notifier": "*",
+    "rollup": "*",
+    "rollup-plugin-babel": "*",
+    "rollup-plugin-commonjs": "*",
+    "rollup-plugin-node-resolve": "*",
+    "rollup-plugin-uglify": "*"
   }
 }
