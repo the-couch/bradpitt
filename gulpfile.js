@@ -1,53 +1,126 @@
-var gulp        = require("gulp"),
-    gutil       = require("gulp-util"),
-    livereload  = require("gulp-livereload"),
-    sass        = require("gulp-sass"),
-    webpack     = require("webpack");
+// imports
 
+const json     = require('./package.json'),
+      sync     = require('browser-sync'),
+      del      = require('del'),
+      fs       = require('fs'),
+      gulp     = require('gulp'),
+      mkdirp   = require('mkdirp'),
+      notifier = require('node-notifier'),
+      rollup   = require('rollup'),
+      babel    = require('rollup-plugin-babel'),
+      commonjs = require('rollup-plugin-commonjs'),
+      resolve  = require('rollup-plugin-node-resolve'),
+      uglify   = require('rollup-plugin-uglify');
 
-gulp.task("webpack", function () {
-    webpack(
-        require("./webpack.config.js"),
-        function (err, stats) {
-            if (err) throw new gutil.PluginError("webpack", err);
-            gutil.log(stats.toString({ colors: true }));
-        }
-    );
-});
+// error handler
 
-gulp.task("watch", function () {
-    livereload.listen();
+const onError = function(error) {
+  notifier.notify({
+    'title': 'Error',
+    'message': 'Compilation failure.'
+  })
 
-    gulp.watch('src/sass/**/*.scss', function() {
-      gulp.run('sass');
-    });
+  console.log(error)
+  this.emit('end')
+}
 
-    gulp.watch([
-        "dist/bundle.js",
-        "demo/app.css",
-        "*.html",
-    ], function (event) {
-        livereload.changed(event);
-    });
+// clean
 
-});
+gulp.task('clean', () => del('dist/**/*.js', 'dist/**/*.map'))
 
-gulp.task('sass', function() {
+// attribution
 
-  srcfile = 'src/sass/app.scss';
-  loadPath = 'demo/*';
-  destdir = 'demo';
+const attribution =
+`/*!
+ * BradPitt.js ${ json.version } - ${ json.description }
+ * Copyright (c) ${ new Date().getFullYear() } ${ json.author } - ${ json.homepage }
+ * License: ${ json.license }
+ */
+`
 
-  gulp.src(srcfile)
-  .pipe(sass({
-    noCache: true,
-    lineNumbers: true,
-    loadPath: loadPath,
-    quiet: true
-  }))
-  .pipe(gulp.dest(destdir));
+// js
 
-});
+const read = {
+  entry: 'src/bradpitt.js',
+  sourceMap: true,
+  plugins: [
+    resolve({ jsnext: true }),
+    babel(),
+    uglify()
+  ]
+}
 
-gulp.task("default", ["webpack", "sass", "watch"]);
-gulp.task("build", ["webpack", "sass"]);
+const write = {
+  format: 'umd',
+  exports: 'default',
+  moduleName: 'BradPitt',
+  sourceMap: true
+}
+
+gulp.task('js', () => {
+  return rollup
+    .rollup(read)
+    .then(bundle => {
+      // generate the bundle
+      const files = bundle.generate(write)
+
+      // cache path to JS dist file
+      const dist = 'dist/bradpitt.min.js'
+
+      // write the JS and sourcemap
+      fs.appendFileSync(dist, files.code)
+      fs.writeFileSync('dist/maps/bradpitt.js.map', files.map.toString())
+    })
+})
+
+// server
+
+const server = sync.create(),
+      reload = sync.reload
+
+const sendMaps = (req, res, next) => {
+  const filename = req.url.split('/').pop()
+  const extension = filename.split('.').pop()
+
+  if(extension === 'css' || extension === 'js') {
+    res.setHeader('X-SourceMap', '/maps/' + filename + '.map')
+  }
+
+  return next()
+}
+
+const options = {
+  notify: false,
+  server: {
+    baseDir: 'dist',
+    middleware: [
+      sendMaps
+    ]
+  },
+  watchOptions: {
+    ignored: '*.map'
+  }
+}
+
+gulp.task('server', () => sync(options))
+
+// watch
+
+gulp.task('watch', () => {
+  gulp.watch('src/bradpitt.js', ['js', reload])
+})
+
+// build and default tasks
+
+gulp.task('build', ['clean'], () => {
+
+  // create dist directories, if needed
+  mkdirp.sync('dist')
+  mkdirp.sync('dist/maps')
+
+  // run the tasks
+  gulp.start('js')
+})
+
+gulp.task('default', ['build', 'server', 'watch'])

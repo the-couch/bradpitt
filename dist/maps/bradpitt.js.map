@@ -1,0 +1,1 @@
+{"version":3,"file":null,"sources":["/Users/kevingreen/Sites/bradpitt/src/bradpitt.js"],"sourcesContent":["\nexport default (object = {}) => {\n\n  let lazy = (el, className, timing) => {\n\n  }\n\n  return {\n    lazy\n  }\n}\n"],"names":["lazy","el","className","timing"],"mappings":"mLACA,qBAEMA,+DAAO,SAACC,EAAIC,EAAWC"}
