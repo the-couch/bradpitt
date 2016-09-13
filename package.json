@@ -1,6 +1,6 @@
 {
   "name": "bradpitt",
-  "version": "0.0.3",
+  "version": "0.0.4",
   "description": "Set of javascript modules that do cool stuff",
   "main": "dist/bradpitt.min.js",
   "jsnext:main": "src/bradpitt.js",
@@ -23,17 +23,17 @@
   },
   "homepage": "https://github.com/the-couch/bradpitt#readme",
   "devDependencies": {
-    "babel-preset-es2015-rollup":                "*",
+    "babel-preset-es2015-rollup": "*",
     "babel-plugin-transform-object-rest-spread": "*",
-    "browser-sync":                              "*",
-    "del":                                       "*",
-    "gulp":                                      "*",
-    "mkdirp":                                    "*",
-    "node-notifier":                             "*",
-    "rollup":                                    "*",
-    "rollup-plugin-babel":                       "*",
-    "rollup-plugin-commonjs":                    "*",
-    "rollup-plugin-node-resolve":                "*",
-    "rollup-plugin-uglify":                      "*"
+    "browser-sync": "*",
+    "del": "*",
+    "gulp": "*",
+    "mkdirp": "*",
+    "node-notifier": "*",
+    "rollup": "*",
+    "rollup-plugin-babel": "*",
+    "rollup-plugin-commonjs": "*",
+    "rollup-plugin-node-resolve": "*",
+    "rollup-plugin-uglify": "*"
   }
 }
