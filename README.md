@@ -4,7 +4,7 @@ This is a javascript snippet library for animating and interacting with the DOM.
 
 ## Initialize BradPitt
 
-```
+```javascript
 import BradPitt from 'bradpitt'
 const bradpitt = new BradPitt()
 ```
@@ -13,7 +13,7 @@ const bradpitt = new BradPitt()
 
 #### Usage
 
-```
+```javascript
 let oscar = doucment.querySelector('.award')
 
 let oscars = doucment.querySelectorAll('.awards')
@@ -22,3 +22,6 @@ bradpitt.lazy(oscar, 'won', 600)
 
 bradpitt.lazy(oscars, 'nominated', 900)
 ```
+
+* * *
+ MIT License
