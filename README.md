@@ -4,9 +4,16 @@ _nothing in demo yet ;)_
 
 This is a javascript snippet library for animating and interacting with the DOM. Most of these are modules I use in my projects everyday and simply wanted to share them for anyone else that's interested in contributing fun reusable code.
 
-## Initialize BradPitt
+### npm
 
-`npm i -s bradpitt`
+Install BradPitt, and add it to your `package.json` dependencies.
+
+```
+$ npm i bradpitt --save
+```
+
+
+## Initialize BradPitt
 
 ```javascript
 import BradPitt from 'bradpitt'
