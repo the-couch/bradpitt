@@ -11,7 +11,7 @@ function lazy(el, className, timing) {
   let sT = (e) => {
     setTimeout(() => { e.classList.add(className) }, timing)
   }
-  el.length ? Array.from(el, (e) => { sT(e) }) : sT(el)
+  el.length ? Array.from(el, (e) => { sT(e) }) : sT(e)
   return this
 }
 
