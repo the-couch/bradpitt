@@ -40,7 +40,7 @@ lazy(oscar, 'nominated', 1200, {
 })
 ```
 
-## Vanillia JS Parallax
+## Vanilla JS Parallax
 
 [Optional Reading](https://labs.redantler.com/vanilla-js-parallax-without-the-bloat-fd1f357914e7#.3xpjqrc2e) that explains the technique.
 
@@ -48,7 +48,7 @@ lazy(oscar, 'nominated', 1200, {
 import {swimming} from 'bradpitt'
 ```
 
-Current implementation is on the dom, this may change to being JS focused but for now set up the elements you want on the page as follows:
+Current implementation is on the DOM, this may change to being JS focused (in the optional reading above it's JS based), but for now set up the elements you want on the page as follows:
 
 #### Usage
 ```html
