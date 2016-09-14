@@ -19,8 +19,6 @@ $ npm i bradpitt --save
 import {lazy} from 'bradpitt'
 ```
 
-### Lazy Adding classes
-
 #### Usage
 
 ```javascript
@@ -52,6 +50,7 @@ import {swimming} from 'bradpitt'
 
 Current implementation is on the dom, this may change to being JS focused but for now set up the elements you want on the page as follows:
 
+#### Usage
 ```html
 <div class="bradpitt" data-speed="4">
   <img src="http://placehold.it/350x150">
