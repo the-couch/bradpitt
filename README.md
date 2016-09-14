@@ -24,13 +24,22 @@ import {lazy} from 'bradpitt'
 #### Usage
 
 ```javascript
-let oscar = doucment.querySelector('.award')
+let oscar = document.querySelector('.award')
 
-let oscars = doucment.querySelectorAll('.awards')
+let oscars = document.querySelectorAll('.awards')
 
 lazy(oscar, 'won', 600)
 
 lazy(oscars, 'nominated', 900)
+```
+
+```javascript
+lazy(oscar, 'nominated', 900, {
+  change: 'add'
+})
+lazy(oscar, 'nominated', 1200, {
+  change: 'remove'
+})
 ```
 
 ## Vanillia JS Parallax
