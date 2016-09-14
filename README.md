@@ -44,7 +44,7 @@ lazy(oscar, 'nominated', 1200, {
 
 ## Vanillia JS Parallax
 
-[https://labs.redantler.com/vanilla-js-parallax-without-the-bloat-fd1f357914e7#.3xpjqrc2e](Optional Reading) that explains the technique.
+[Optional Reading](https://labs.redantler.com/vanilla-js-parallax-without-the-bloat-fd1f357914e7#.3xpjqrc2e) that explains the technique.
 
 ```javascript
 import {swimming} from 'bradpitt'
