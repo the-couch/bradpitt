@@ -22,13 +22,41 @@ let classSwap = (e, change, className) => {
  *  @param  {options} options object
  */
 
-function lazy(el, className, timing, options = {}) {
+let lazy = (el, className, timing, options = {}) => {
   let change = options.change || 'add'
   let sT = (e) => {
     setTimeout(() => { classSwap(e, change, className) }, timing)
   }
   el.length ? Array.from(el, (e) => { sT(e) }) : sT(el)
-  return this
+}
+
+let swimming = (className) => {
+  const instance = Object.create({
+    init: () => {
+      window.addEventListener('scroll', handleScroll)
+    }
+  })
+  return instance
+
+  function handleScroll() {
+    let elms = document.querySelectorAll(className)
+    elms.length ? Array.from(elms, (e) => { mI(e)}) : mI(elms)
+  }
+
+  function mI(el) {
+    let scrollPosition = setPosition()
+    let displace = el.getAttribute('data-speed') || 2
+    el.style.transform = "translate3d(0px, "+(scrollPosition / displace)+"px, 0px)"
+  }
+
+  function setPosition() {
+    if (window.pageYOffset !== undefined) {
+      return window.pageYOffset
+    } else {
+      return (document.documentElement || document.body.parentNode || document.body).scrollTop
+    }
+  }
 }
 
 exports.lazy = lazy
+exports.swimming = swimming
