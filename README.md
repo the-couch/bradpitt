@@ -1,4 +1,4 @@
-## Bradpitt.js
+# BradPitt.js  [![npm](https://img.shields.io/npm/v/bradpitt.svg?maxAge=2592000)](https://www.npmjs.com/package/bradpitt)
 
 _nothing in demo yet ;)_
 
