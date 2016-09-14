@@ -1,6 +1,6 @@
 {
   "name": "bradpitt",
-  "version": "0.1.0",
+  "version": "0.2.0",
   "description": "Set of javascript modules that do cool stuff",
   "main": "dist/bradpitt.min.js",
   "jsnext:main": "src/bradpitt.js",
